@@ -1,7 +1,7 @@
 package com.ciandt.techlab.solid.controller;
 
-import com.ciandt.techlab.solid.model.Client;
-import com.ciandt.techlab.solid.repository.ClientRepository;
+import com.ciandt.techlab.solid.model.Conta;
+import com.ciandt.techlab.solid.repository.ContaRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/clients")
-public class ClientController {
+@RequestMapping("/contas")
+public class ContaController {
 
-    private final ClientRepository repository;
-
-    @PostMapping
-    public Client save(@RequestBody  Client client) {
-        return repository.save(client);
-    }
+    private final ContaRepository contaRepository;
 
     @GetMapping
-    public List<Client> findAll() {
-        return repository.findAll();
+    public List<Conta> findAll() {
+        return contaRepository.findAll();
+    }
+
+    @PostMapping
+    public Conta save(@RequestBody Conta conta) {
+        return contaRepository.save(conta);
     }
 }
