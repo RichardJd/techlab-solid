@@ -5,10 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Funcionario {
 
     @Id
@@ -22,10 +28,11 @@ public class Funcionario {
     private Double salario;
 
     public static Funcionario valueOf(FuncionarioDtoRequest funcionarioDtoRequest) {
-        Funcionario funcionario = new Funcionario();
-        funcionario.setNome(funcionarioDtoRequest.getNome());
-        funcionario.setCargo(funcionarioDtoRequest.getCargo());
-        funcionario.setSalario(funcionarioDtoRequest.getSalario());
-        return funcionario;
+        return Funcionario
+            .builder()
+            .nome(funcionarioDtoRequest.getNome())
+            .cargo(funcionarioDtoRequest.getCargo())
+            .salario(funcionarioDtoRequest.getSalario())
+            .build();
     }
 }
