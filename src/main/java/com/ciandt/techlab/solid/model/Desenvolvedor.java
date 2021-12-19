@@ -1,12 +1,11 @@
 package com.ciandt.techlab.solid.model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import lombok.Data;
 
 @Data
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorValue("DESENVOLVEDOR")
 public class Desenvolvedor extends Funcionario {
 }
