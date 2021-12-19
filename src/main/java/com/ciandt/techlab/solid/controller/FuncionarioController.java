@@ -1,5 +1,6 @@
 package com.ciandt.techlab.solid.controller;
 
+import com.ciandt.techlab.solid.helper.CalculaHelper;
 import com.ciandt.techlab.solid.model.Funcionario;
 import com.ciandt.techlab.solid.repository.FuncionarioRepository;
 import java.util.List;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/funcionarios")
 public class FuncionarioController {
 
+    private final CalculaHelper calculaHelper;
     private final FuncionarioRepository funcionarioRepository;
 
     @GetMapping
@@ -32,6 +34,13 @@ public class FuncionarioController {
     public Double obterSalarioBonificado(@PathVariable Long id) {
         Funcionario funcionario = funcionarioRepository.findById(id).orElseThrow();
 
-        return funcionario.calculaSalarioComBonificacao();
+        return calculaHelper.calculaSalarioComBonificacao(funcionario);
     }
+
+//    @GetMapping("/{id}/bonificacao/comissao")
+//    public Double obterSalarioBonificadoComComissao(@PathVariable Long id) {
+//        Funcionario funcionario = funcionarioRepository.findById(id).orElseThrow();
+//
+//        return calculaHelper.calculaSalarioComBonificacaoEComissao(funcionario);
+//    }
 }

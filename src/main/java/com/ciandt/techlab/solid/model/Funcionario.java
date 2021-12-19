@@ -1,14 +1,14 @@
 package com.ciandt.techlab.solid.model;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import lombok.Data;
 
+@MappedSuperclass
 @Data
-@Entity
-public class Funcionario {
+public abstract class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,11 +16,7 @@ public class Funcionario {
 
     private String nome;
 
-    private Cargo cargo;
+    private NivelCargo nivelCargo;
 
     private Double salario;
-
-    public Double calculaSalarioComBonificacao() {
-        return this.cargo.getRegra().calcula(this);
-    }
 }
