@@ -8,4 +8,6 @@ import lombok.Data;
 @Entity
 @DiscriminatorValue("DESENVOLVEDOR")
 public class Desenvolvedor extends Funcionario {
+
+    private Integer quantidadeHorasExtras;
 }

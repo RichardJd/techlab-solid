@@ -1,5 +1,6 @@
 package com.ciandt.techlab.solid.model;
 
+import java.util.Date;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
@@ -22,7 +23,13 @@ public abstract class Funcionario {
 
     private String nome;
 
-    private NivelCargo nivelCargo;
+    private String cpf;
+
+    private String curriculo;
+
+    private Date dataCadastro;
+
+    private String cargo;
 
     private Double salario;
 }
