@@ -1,6 +1,7 @@
 package com.ciandt.techlab.solid.model;
 
 import com.ciandt.techlab.solid.dto.FuncionarioDtoRequest;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,9 +24,16 @@ public class Funcionario {
 
     private String nome;
 
+    private String cpf;
+
+    private String curriculo;
+
+    private Date dataCadastro;
+
     private String cargo;
 
     private Double salario;
+
 
     public static Funcionario valueOf(FuncionarioDtoRequest funcionarioDtoRequest) {
         return Funcionario
@@ -34,5 +42,22 @@ public class Funcionario {
             .cargo(funcionarioDtoRequest.getCargo())
             .salario(funcionarioDtoRequest.getSalario())
             .build();
+    }
+
+    public Double calculaSalarioComBonificacao() {
+        if (this.getCargo().equals("DESENVOLVEDOR_JUNIOR")) {
+            return this.getSalario() + (this.getSalario() * 0.1);
+        } else if (this.getCargo().equals("DESENVOLVEDOR_PLENO")) {
+            return this.getSalario() + (this.getSalario() * 0.2);
+        } else if ((this.getCargo().equals("DESENVOLVEDOR_SENIOR"))) {
+            return this.getSalario() + (this.getSalario() * 0.3);
+        } else if ((this.getCargo().equals("VENDEDOR_JUNIOR"))) {
+            return this.getSalario() + (this.getSalario() * 0.1);
+        } else if ((this.getCargo().equals("VENDEDOR_PLENO"))) {
+            return this.getSalario() + (this.getSalario() * 0.2);
+        } else if ((this.getCargo().equals("VENDEDOR_SENIOR"))) {
+            return this.getSalario() + (this.getSalario() * 0.3);
+        }
+        return 0.0;
     }
 }

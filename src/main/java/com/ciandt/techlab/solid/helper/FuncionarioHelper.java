@@ -19,23 +19,6 @@ public class FuncionarioHelper {
 
     private final FuncionarioRepository repository;
 
-    public Double calculaSalarioComBonificacao(Funcionario funcionario) {
-        if (funcionario.getCargo().equals("DESENVOLVEDOR_JUNIOR")) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.1);
-        } else if (funcionario.getCargo().equals("DESENVOLVEDOR_PLENO")) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.2);
-        } else if ((funcionario.getCargo().equals("DESENVOLVEDOR_SENIOR"))) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.3);
-        } else if ((funcionario.getCargo().equals("VENDEDOR_JUNIOR"))) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.1);
-        } else if ((funcionario.getCargo().equals("VENDEDOR_PLENO"))) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.2);
-        } else if ((funcionario.getCargo().equals("VENDEDOR_SENIOR"))) {
-            return funcionario.getSalario() + (funcionario.getSalario() * 0.3);
-        }
-        return 0.0;
-    }
-
     @PostMapping
     public Funcionario salvar(@RequestBody FuncionarioDtoRequest funcionarioDtoRequest) {
         return this.repository.save(Funcionario.valueOf(funcionarioDtoRequest));
@@ -44,7 +27,7 @@ public class FuncionarioHelper {
     @GetMapping("/{id}/bonificacao")
     public FuncionarioDtoResponse obterSalarioBonificado(@PathVariable Long id) {
         Funcionario funcionario = repository.findById(id).orElseThrow();
-        Double salarioComBonificacao = this.calculaSalarioComBonificacao(funcionario);
+        Double salarioComBonificacao = funcionario.calculaSalarioComBonificacao();
 
         return FuncionarioDtoResponse.valueOf(funcionario, salarioComBonificacao);
     }
