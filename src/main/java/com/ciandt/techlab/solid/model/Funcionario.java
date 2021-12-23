@@ -29,7 +29,7 @@ public abstract class Funcionario {
 
     private Date dataCadastro;
 
-    private String cargo;
+    private NivelCargo nivelCargo;
 
     private Double salario;
 }
