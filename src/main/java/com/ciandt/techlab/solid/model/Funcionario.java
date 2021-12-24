@@ -79,4 +79,21 @@ public class Funcionario {
     public Double calculaSalarioComHorasExtras() {
         return calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.05);
     }
+
+    public String validarCpf(Funcionario funcionario) {
+        return funcionario.getCpf().equals("") ? "Cpf preenchido incorretamente:" :  "Cpf preenchido corretamente";
+    }
+
+    public String validarCurriculo(Funcionario funcionario) {
+        return funcionario.getCurriculo().equals("") ? "Currículo preenchido incorretamente" : "Email preenchido corretamente";
+    }
+
+    public String validarNome(String nome) {
+
+        return nome.equals("") ? "Nome preenchido incorretamente" : "Nome preenchido corretamente";
+    }
+
+    public String validarDataCadastro(Date data) {
+        return data == null ? "Data preenchida incorretamente": "Data preenchida corretamente";
+    }
 }
