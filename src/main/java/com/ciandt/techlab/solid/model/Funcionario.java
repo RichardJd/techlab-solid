@@ -34,6 +34,10 @@ public class Funcionario {
 
     private Double salario;
 
+    private Integer quantidadeDeItensVendidos;
+
+    private Integer quantidadeHorasExtras;
+
 
     public static Funcionario valueOf(FuncionarioDtoRequest funcionarioDtoRequest) {
         return Funcionario
@@ -59,5 +63,20 @@ public class Funcionario {
             return this.getSalario() + (this.getSalario() * 0.3);
         }
         return 0.0;
+    }
+
+    public Double calculaSalarioComBonificacaoEComissao() {
+        if ((this.getCargo().equals("VENDEDOR_JUNIOR"))) {
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeDeItensVendidos() * 0.02);
+        } else if ((this.getCargo().equals("VENDEDOR_PLENO"))) {
+            return this.calculaSalarioComBonificacao() + (this.calculaSalarioComBonificacao() * 0.05);
+        } else if ((this.getCargo().equals("VENDEDOR_SENIOR"))) {
+            return this.calculaSalarioComBonificacao() + (this.calculaSalarioComBonificacao() * 0.1);
+        }
+        return 0.0;
+    }
+
+    public Double calculaSalarioComHorasExtras() {
+        return calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.05);
     }
 }

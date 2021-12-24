@@ -1,4 +1,4 @@
-package com.ciandt.techlab.solid.helper;
+package com.ciandt.techlab.solid.controller;
 
 import com.ciandt.techlab.solid.dto.FuncionarioDtoRequest;
 import com.ciandt.techlab.solid.dto.FuncionarioDtoResponse;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/funcionarios")
-public class FuncionarioHelper {
+public class FuncionarioController {
 
     private final FuncionarioRepository repository;
 
@@ -28,6 +28,22 @@ public class FuncionarioHelper {
     public FuncionarioDtoResponse obterSalarioBonificado(@PathVariable Long id) {
         Funcionario funcionario = repository.findById(id).orElseThrow();
         Double salarioComBonificacao = funcionario.calculaSalarioComBonificacao();
+
+        return FuncionarioDtoResponse.valueOf(funcionario, salarioComBonificacao);
+    }
+
+    @GetMapping("/{id}/bonificacao-comissao")
+    public FuncionarioDtoResponse obterSalarioBonificadoEComissionado(@PathVariable Long id) {
+        Funcionario funcionario = repository.findById(id).orElseThrow();
+        Double salarioComBonificacao = funcionario.calculaSalarioComBonificacaoEComissao();
+
+        return FuncionarioDtoResponse.valueOf(funcionario, salarioComBonificacao);
+    }
+
+    @GetMapping("/{id}/bonificacao-extras")
+    public FuncionarioDtoResponse obterSalarioBonificadoComExtras(@PathVariable Long id) {
+        Funcionario funcionario = repository.findById(id).orElseThrow();
+        Double salarioComBonificacao = funcionario.calculaSalarioComHorasExtras();
 
         return FuncionarioDtoResponse.valueOf(funcionario, salarioComBonificacao);
     }
