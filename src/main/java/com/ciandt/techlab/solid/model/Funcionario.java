@@ -1,6 +1,5 @@
 package com.ciandt.techlab.solid.model;
 
-import com.ciandt.techlab.solid.dto.FuncionarioDtoRequest;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,16 +36,6 @@ public class Funcionario {
     private Integer quantidadeDeItensVendidos;
 
     private Integer quantidadeHorasExtras;
-
-
-    public static Funcionario valueOf(FuncionarioDtoRequest funcionarioDtoRequest) {
-        return Funcionario
-            .builder()
-            .nome(funcionarioDtoRequest.getNome())
-            .cargo(funcionarioDtoRequest.getCargo())
-            .salario(funcionarioDtoRequest.getSalario())
-            .build();
-    }
 
     public Double calculaSalarioComBonificacao() {
         if (this.getCargo().equals("DESENVOLVEDOR_JUNIOR")) {
