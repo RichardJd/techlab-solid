@@ -21,7 +21,7 @@ public class FuncionarioController {
 
     @PostMapping
     public ResponseEntity<Funcionario> salvar(@RequestBody Funcionario funcionario) {
-        if("Nome preenchido corretamente".equals(funcionario.validarNome(funcionario.getNome()))) {
+        if("Nome preenchido incorretamente".equals(funcionario.validarNome(funcionario.getNome()))) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(this.repository.save(funcionario));
