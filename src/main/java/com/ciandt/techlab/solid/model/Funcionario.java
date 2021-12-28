@@ -58,15 +58,22 @@ public class Funcionario {
         if ((this.getCargo().equals("VENDEDOR_JUNIOR"))) {
             return this.calculaSalarioComBonificacao() + (this.getQuantidadeDeItensVendidos() * 0.02);
         } else if ((this.getCargo().equals("VENDEDOR_PLENO"))) {
-            return this.calculaSalarioComBonificacao() + (this.calculaSalarioComBonificacao() * 0.05);
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeDeItensVendidos() * 0.05);
         } else if ((this.getCargo().equals("VENDEDOR_SENIOR"))) {
-            return this.calculaSalarioComBonificacao() + (this.calculaSalarioComBonificacao() * 0.1);
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeDeItensVendidos() * 0.1);
         }
         return 0.0;
     }
 
     public Double calculaSalarioComBonificacaoEHorasExtras() {
-        return calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.05);
+        if ((this.getCargo().equals("DESENVOLVEDOR_JUNIOR"))) {
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.1);
+        } else if ((this.getCargo().equals("DESENVOLVEDOR_PLENO"))) {
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.3);
+        } else if ((this.getCargo().equals("DESENVOLVEDOR_SENIOR"))) {
+            return this.calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.5);
+        }
+        return 0.0;
     }
 
     public String validarCpf(Funcionario funcionario) {
@@ -74,7 +81,7 @@ public class Funcionario {
     }
 
     public String validarCurriculo(Funcionario funcionario) {
-        return funcionario.getCurriculo().equals("") ? "Currículo preenchido incorretamente" : "Email preenchido corretamente";
+        return funcionario.getCurriculo().equals("") ? "Currículo preenchido incorretamente" : "Currículo preenchido corretamente";
     }
 
     public String validarNome(String nome) {
