@@ -42,6 +42,6 @@ public class FuncionarioController {
     @GetMapping("/{id}/bonificacao-extras")
     public Double obterSalarioBonificadoComExtras(@PathVariable Long id) {
         Funcionario funcionario = repository.findById(id).orElseThrow();
-        return funcionario.calculaSalarioComHorasExtras();
+        return funcionario.calculaSalarioComBonificacaoEHorasExtras();
     }
 }

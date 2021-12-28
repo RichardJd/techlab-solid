@@ -65,7 +65,7 @@ public class Funcionario {
         return 0.0;
     }
 
-    public Double calculaSalarioComHorasExtras() {
+    public Double calculaSalarioComBonificacaoEHorasExtras() {
         return calculaSalarioComBonificacao() + (this.getQuantidadeHorasExtras() * 0.05);
     }
 
