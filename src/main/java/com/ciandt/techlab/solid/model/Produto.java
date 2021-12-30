@@ -28,8 +28,4 @@ public class Produto {
     private Integer quantidade;
 
     private Date dataCadastro;
-
-    public String validarDataCadastro(Date data) {
-        return data == null ? "Data preenchida incorretamente": "Data preenchida corretamente";
-    }
 }

@@ -1,5 +1,6 @@
 package com.ciandt.techlab.solid.controller;
 
+import com.ciandt.techlab.solid.helper.validacao.ValidacaoProduto;
 import com.ciandt.techlab.solid.model.Produto;
 import com.ciandt.techlab.solid.repository.ProdutoRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,9 +18,11 @@ public class ProdutoController {
 
     private final ProdutoRepository repository;
 
+    private final ValidacaoProduto validacaoProdutoHelper;
+
     @PostMapping
     public ResponseEntity<Produto> salvar(@RequestBody Produto produto) {
-        if("Data preenchida incorretamente".equals(produto.validarDataCadastro(produto.getDataCadastro()))) {
+        if("Data preenchida incorretamente".equals(validacaoProdutoHelper.validarDataCadastro(produto.getDataCadastro()))) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(this.repository.save(produto));
