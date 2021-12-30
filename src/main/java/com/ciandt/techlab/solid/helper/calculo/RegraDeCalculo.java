@@ -1,4 +1,4 @@
-package com.ciandt.techlab.solid.helper;
+package com.ciandt.techlab.solid.helper.calculo;
 
 import com.ciandt.techlab.solid.model.Desenvolvedor;
 import com.ciandt.techlab.solid.model.Funcionario;
@@ -10,5 +10,5 @@ public interface RegraDeCalculo {
 
     Double calculaSalarioComBonificacaoEComissao(Vendedor vendedor);
 
-    Double calculaSalarioComHorasExtras(Desenvolvedor desenvolvedor);
+    Double calculaSalarioComBonificacaoEHorasExtras(Desenvolvedor desenvolvedor);
 }

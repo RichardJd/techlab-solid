@@ -1,9 +1,9 @@
 package com.ciandt.techlab.solid.model;
 
-import com.ciandt.techlab.solid.helper.RegraDeCalculo;
-import com.ciandt.techlab.solid.helper.RegraDeCalculoJunior;
-import com.ciandt.techlab.solid.helper.RegraDeCalculoSenior;
-import com.ciandt.techlab.solid.helper.RegraDeCalculoPleno;
+import com.ciandt.techlab.solid.helper.calculo.RegraDeCalculo;
+import com.ciandt.techlab.solid.helper.calculo.RegraDeCalculoJunior;
+import com.ciandt.techlab.solid.helper.calculo.RegraDeCalculoPleno;
+import com.ciandt.techlab.solid.helper.calculo.RegraDeCalculoSenior;
 
 public enum NivelCargo {
 
@@ -11,13 +11,13 @@ public enum NivelCargo {
     PLENO(new RegraDeCalculoPleno()),
     SENIOR(new RegraDeCalculoSenior());
 
-    private RegraDeCalculo regra;
+    private RegraDeCalculo regraDeCalculo;
 
-    NivelCargo(RegraDeCalculo regra){
-        this.regra = regra;
+    NivelCargo(RegraDeCalculo regraDeCalculo) {
+        this.regraDeCalculo = regraDeCalculo;
     }
 
-    public RegraDeCalculo getRegra() {
-        return regra;
+    public RegraDeCalculo getRegraDeCalculo() {
+        return regraDeCalculo;
     }
 }

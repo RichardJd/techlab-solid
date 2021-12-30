@@ -1,9 +1,11 @@
-package com.ciandt.techlab.solid.helper;
+package com.ciandt.techlab.solid.helper.calculo;
 
 import com.ciandt.techlab.solid.model.Desenvolvedor;
 import com.ciandt.techlab.solid.model.Funcionario;
 import com.ciandt.techlab.solid.model.Vendedor;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegraDeCalculoJunior implements RegraDeCalculo {
 
     @Override
@@ -13,13 +15,11 @@ public class RegraDeCalculoJunior implements RegraDeCalculo {
 
     @Override
     public Double calculaSalarioComBonificacaoEComissao(Vendedor vendedor) {
-        return calculaSalarioComBonificacao(vendedor) + (vendedor.getQuantidadeDeItensVendidos()) * 0.02;
+        return this.calculaSalarioComBonificacao(vendedor) + (vendedor.getQuantidadeDeItensVendidos() * 0.02);
     }
 
-
     @Override
-    public Double calculaSalarioComHorasExtras(Desenvolvedor desenvolvedor) {
-        return calculaSalarioComBonificacao(desenvolvedor) +
-                (desenvolvedor.getQuantidadeHorasExtras() * 0.02);
+    public Double calculaSalarioComBonificacaoEHorasExtras(Desenvolvedor desenvolvedor) {
+        return this.calculaSalarioComBonificacao(desenvolvedor) + (desenvolvedor.getQuantidadeHorasExtras() * 0.1);
     }
 }

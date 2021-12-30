@@ -13,7 +13,7 @@ import lombok.Data;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="tipo_funcionario", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "tipo_cargo", discriminatorType = DiscriminatorType.STRING)
 @Data
 public abstract class Funcionario {
 

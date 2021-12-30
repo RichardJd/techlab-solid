@@ -4,9 +4,9 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import lombok.Data;
 
-@Data
 @Entity
 @DiscriminatorValue("DESENVOLVEDOR")
+@Data
 public class Desenvolvedor extends Funcionario {
 
     private Integer quantidadeHorasExtras;
